@@ -8,5 +8,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="scala-sdk-2.11.8" level="application" />
+    <orderEntry type="library" name="org.skife.com.typesafe.config:typesafe-config:0.3.0" level="project" />
+    <orderEntry type="library" name="telegrambots-2.3.3.7-jar-with-dependencies" level="project" />
   </component>
 </module>
