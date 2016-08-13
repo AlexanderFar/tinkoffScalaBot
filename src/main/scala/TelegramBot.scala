@@ -15,15 +15,18 @@ class TinkoffBotHandler extends TelegramLongPollingBot with BotSettings {
 
     //check if the update has a message
     if (update.hasMessage()) {
-      val message = update.getMessage();
+      val message = update.getMessage
 
       //check if the message has text. it could also  contain for example a location ( message.hasLocation() )
-      if (message.hasText()) {
+      if (message.hasText) {
+        val answer = CommandFactory.getCommand(message.getText).getAnswer
+
 
         //create a object that contains the information to send back the message
-        val sendMessageRequest = new SendMessage();
-        sendMessageRequest.setChatId(message.getChatId().toString()); //who should get the message? the sender from which we got the message...
-        sendMessageRequest.setText("you said: " + message.getText());
+        val sendMessageRequest = new SendMessage
+        //who should get the message? the sender from which we got the message...
+        sendMessageRequest.setChatId(message.getChatId.toString)
+        sendMessageRequest.setText(answer)
         //        try {
         sendMessage(sendMessageRequest); //at the end, so some magic and send the message ;)
         //        } catch  {
