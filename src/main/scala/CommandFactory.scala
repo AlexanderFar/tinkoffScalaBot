@@ -9,7 +9,7 @@ object CommandFactory {
   def getCommand(text: String): Command = {
     val firstWorld = text.split(' ').headOption getOrElse ""
     firstWorld match {
-      case c if  c.equalsIgnoreCase("ex")  || c.equalsIgnoreCase("exchange") || c.equalsIgnoreCase("currency") => new CurrencyExchangeRates
+      case c if c.equalsIgnoreCase("ex") || c.equalsIgnoreCase("/ex") => new CurrencyExchangeRates
       case _ => new CommandNotFound
     }
   }

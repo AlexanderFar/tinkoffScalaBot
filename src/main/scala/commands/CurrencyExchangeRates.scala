@@ -7,10 +7,15 @@ import main.scala.bankApi.CurrencyExchangeApi
   */
 class CurrencyExchangeRates extends Command {
   //there must be some text about bot + help page corresponding to request + general help page
-  def getAnswer() = {
-    val rates = CurrencyExchangeRates.api.getRates()
-    rates.foldLeft("")((s, tpl) => s"$s\n${tpl._1} - RUB: ${tpl._2}")
-  }
+  def getAnswer() =
+    CurrencyExchangeRates.api
+      .getRates()
+      .map(list =>
+        list.foldLeft("")((s, rate) =>
+          s"$s\n${rate.currencyType} - RUB: ${rate.buy} \\ ${rate.sell}"
+        ))
+      .getOrElse("service unavailable")
+
 }
 
 object CurrencyExchangeRates {
