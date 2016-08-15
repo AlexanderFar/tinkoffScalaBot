@@ -1,3 +1,4 @@
+package main.scala.core
 /**
   * Created by AFarashutdinov on 13.08.2016.
   */

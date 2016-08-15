@@ -1,5 +1,6 @@
 package main.scala.bankApi
 
+import main.scala.bankApi.CurrencyExchangeApi.Rate
 import org.json4s._
 import org.json4s.native.JsonMethods._
 import org.json4s.native.Serialization
@@ -44,10 +45,6 @@ class CurrencyExchangeApi extends BaseApi with ApiSettings {
     Serialization.formats(FullTypeHints(List(classOf[ApiRate])))
   }
 
-  class Rate(
-              val currencyType: CurrencyExchangeApi.Currency.Value,
-              val buy: Double,
-              val sell: Double)
 
 
   class ApiRate(
@@ -68,6 +65,10 @@ object CurrencyExchangeApi {
     val RUB, USD, EUR, GBP = Value
   }
 
+  class Rate(
+              val currencyType: CurrencyExchangeApi.Currency.Value,
+              val buy: Double,
+              val sell: Double)
 
   /*  object RateCategory extends Enumeration {
     val

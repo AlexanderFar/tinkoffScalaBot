@@ -8,16 +8,15 @@ import org.json4s.JValue
 
 class BaseApi {
 
-  protected def getResponse(url: String): Option[String] = {
+  protected def getResponse(url: String): Option[String] =
     try {
-      val response = scala.io.Source.fromURL(url).mkString
-      return Option(response)
+      Option(scala.io.Source.fromURL(url).mkString)
     } catch {
       case _ => None
     }
-  }
 
-  protected def tryParseJson[T](json: JValue, path: String)(implicit formats : org.json4s.Formats, mf : scala.reflect.Manifest[T]): Option[T] =
+
+  protected def tryParseJson[T](json: JValue, path: String)(implicit formats: org.json4s.Formats, mf: scala.reflect.Manifest[T]): Option[T] =
     try {
       (json \\ path).extractOpt[T]
     } catch {
